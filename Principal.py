@@ -3,10 +3,10 @@ from tkinter import messagebox
 import customtkinter
 from Cadastrar import criar_janela_cadastro
 from img import img_64
+from menu_email import criar_janela_email
 import json
 
 def validar_email(email):
-    # Utilizando expressão regular para validação de e-mail
     import re
     return re.match(r"[^@]+@[^@]+\.[^@]+", email)
 
@@ -15,7 +15,7 @@ def verificar_credenciais(email, senha):
         with open('credenciais.json', 'r') as f:
             credenciais = json.load(f)
 
-        for usuario in credenciais:
+        for usuario in credenciais:  # Usando um for loop aqui
             if usuario.get('email') == email and usuario.get('senha') == senha:
                 return True
         return False
@@ -46,7 +46,7 @@ def button_event(entry_email, entry_senha, root_login):
     if verificar_credenciais(email, senha):
         messagebox.showinfo("Login", "Login realizado com sucesso!")
         root_login.withdraw()
-        menu_info()
+        criar_janela_email()
     else:
         messagebox.showwarning("Credenciais Inválidas", "Email ou senha incorretos. Por favor, tente novamente.")
 
@@ -142,7 +142,14 @@ def criar_janela_login():
                                      command=lambda: (root_login.withdraw(), criar_janela_cadastro(root_login)))
     button.place(relx=0.57, rely=0.91, anchor=tk.CENTER)
 
-    root_login.mainloop()
+
+    root_login.update()
+    while True:
+        try:
+            root_login.update_idletasks()
+            root_login.update()
+        except tk.TclError:
+            break
 
 if __name__ == "__main__":
     criar_janela_login()

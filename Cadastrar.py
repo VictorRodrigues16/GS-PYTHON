@@ -7,6 +7,7 @@ from img import img_64
 
 USERS_FILE = "credenciais.json"
 
+
 def validar_email(email):
     """Valida o formato do e-mail."""
     try:
@@ -14,12 +15,14 @@ def validar_email(email):
     except TypeError:
         return False
 
+
 def validar_nome(nome):
     """Valida se o nome contém apenas letras."""
     try:
         return all(parte.isalpha() for parte in nome.split())
     except AttributeError:
         return False
+
 
 def verificar_email_existente(email):
     """Verifica se o e-mail já existe no arquivo de usuários."""
@@ -34,12 +37,13 @@ def verificar_email_existente(email):
     except (FileNotFoundError, json.JSONDecodeError):
         return False
 
+
 def cadastrar_usuario(nome, email, senha):
     """Cadastra um novo usuário."""
     try:
         usuario = {'nome': nome, 'email': email, 'senha': senha}
         if not os.path.exists(USERS_FILE):
-            with open(USERS_FILE, "w") as file:
+            with open(USERS_FILE, "w") as file:     #Quando um arquivo for aberto com o with ele é fechado automaticamente.
                 json.dump([usuario], file, indent=4)
         else:
             with open(USERS_FILE, "r") as file:
@@ -52,8 +56,10 @@ def cadastrar_usuario(nome, email, senha):
     except (FileNotFoundError, json.JSONDecodeError, TypeError):
         print("Erro ao cadastrar usuário.")
 
+
 def criar_janela_cadastro(root):
     """Cria a janela de cadastro de usuários."""
+
     def button_event(entry_nome, entry_email, entry_senha, entry_senha2):
         """Evento do botão de cadastro."""
         nome = entry_nome.get()
@@ -105,7 +111,8 @@ def criar_janela_cadastro(root):
     label_image = customtkinter.CTkLabel(master=root_cadastro, image=imgnew, text=' ')
     label_image.place(relx=0.5, rely=0.15, anchor=tk.CENTER)
 
-    label = customtkinter.CTkLabel(master=root_cadastro, text="CRIE SUA CONTA", font=("Arial", 34, 'bold'), text_color='#3284AE')
+    label = customtkinter.CTkLabel(master=root_cadastro, text="CRIE SUA CONTA", font=("Arial", 34, 'bold'),
+                                   text_color='#3284AE')
     label.place(relx=0.5, rely=0.35, anchor=tk.CENTER)
 
     entry_nome = customtkinter.CTkEntry(master=root_cadastro, placeholder_text="Nome Completo", text_color='#939191',
@@ -118,12 +125,14 @@ def criar_janela_cadastro(root):
                                          border_width=1, corner_radius=10, justify='center', fg_color='#474943')
     entry_email.place(relx=0.5, rely=0.54, anchor=tk.CENTER)
 
-    entry_senha = customtkinter.CTkEntry(master=root_cadastro, placeholder_text="Insira sua senha", text_color='#939191',
+    entry_senha = customtkinter.CTkEntry(master=root_cadastro, placeholder_text="Insira sua senha",
+                                         text_color='#939191',
                                          font=("Arial", 16, 'bold'), width=350, height=45, border_width=1,
                                          corner_radius=10, justify='center', fg_color='#474943')
     entry_senha.place(relx=0.5, rely=0.64, anchor=tk.CENTER)
 
-    entry_senha2 = customtkinter.CTkEntry(master=root_cadastro, placeholder_text="Confirme sua senha", text_color='#939191',
+    entry_senha2 = customtkinter.CTkEntry(master=root_cadastro, placeholder_text="Confirme sua senha",
+                                          text_color='#939191',
                                           font=("Arial", 16, 'bold'), width=350, height=45, border_width=1,
                                           corner_radius=10, justify='center', fg_color='#474943')
     entry_senha2.place(relx=0.5, rely=0.74, anchor=tk.CENTER)
@@ -134,6 +143,7 @@ def criar_janela_cadastro(root):
     button.place(relx=0.5, rely=0.87, anchor=tk.CENTER)
 
     root_cadastro.mainloop()
+
 
 if __name__ == "__main__":
     root = customtkinter.CTk()
