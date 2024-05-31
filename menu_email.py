@@ -5,8 +5,8 @@ from img import img_64
 from datetime import datetime
 from Disparo_Email import enviar_email
 from lista_emails import criar_janela_emails_lista
+from lista_emails import emails_data
 
-emails_data = []  # Lista global para armazenar emails e datas
 
 def validar_email(email):
     # Utilizando expressão regular para validação de e-mail

@@ -1,6 +1,6 @@
 import customtkinter
 
-
+emails_data = []
 
 def criar_janela_emails_lista(root_login):
     root_lista = customtkinter.CTkToplevel()
@@ -34,6 +34,14 @@ def criar_janela_emails_lista(root_login):
     header_date = customtkinter.CTkLabel(master=frame, text="Data", font=("Arial", 14, 'bold'),
                                          text_color='#1b98e0', width=35, anchor=customtkinter.W)
     header_date.grid(row=0, column=1, padx=10, pady=5)
+
+    # Exibir os emails e datas na planilha
+    for i, data in enumerate(emails_data, start=1):
+        email_label = customtkinter.CTkLabel(master=frame, text=data["email"], font=("Arial", 12), text_color='#ffffff')
+        email_label.grid(row=i, column=0, padx=10, pady=5)
+
+        date_label = customtkinter.CTkLabel(master=frame, text=data["date"], font=("Arial", 12), text_color='#ffffff')
+        date_label.grid(row=i, column=1, padx=10, pady=5)
 
     button_voltar = customtkinter.CTkButton(master=root_lista,
                                             width=100,
