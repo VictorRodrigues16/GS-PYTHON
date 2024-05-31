@@ -82,7 +82,7 @@ def criar_janela_email():
                                                  border_width=0,
                                                  corner_radius=8,
                                                  fg_color='#4682B4',
-                                                 text="MOSTRAR EMAILS",
+                                                 text="GESTÃO DE ENVIOS",
                                                  font=("Nunito", 14, 'bold'),
                                                  command=lambda: show_email_list(root_login))
     button_show_emails.place(relx=0.5, rely=0.89, anchor=tk.CENTER)
