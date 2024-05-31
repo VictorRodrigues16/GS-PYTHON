@@ -1,5 +1,5 @@
 # OceanGuard
-Protegendo nossos oceanos, um e-mail de conscientização por vez!
+COMPREENDER, ENGAJAR E TRANSFORMAR
 
 ## Autores
 - Marcelo Vieira de Melo | RM: 552953
