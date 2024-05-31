@@ -51,7 +51,7 @@ def button_event(entry_email, entry_senha, root_login):
         messagebox.showwarning("Credenciais Inválidas", "Email ou senha incorretos. Por favor, tente novamente.")
 
 def criar_janela_login():
-    root_login = customtkinter.CTkToplevel()
+    root_login = customtkinter.CTk()
     root_login.configure(fg_color='#f1f1f1')
     root_login.title("FAÇA SEU LOGIN")
     root_login.configure(fg_color='#161b33')
